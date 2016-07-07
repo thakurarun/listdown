@@ -16,7 +16,7 @@ export class SearchPageComponent {
 
     }
     searchItem() {
-        console.log(this.searchText);
-        this._router.navigate(['/List',this.searchText] );
+        if(this.searchText.trim().length)
+        this._router.navigate(['/List',this.searchText.trim()] );
     }
 }

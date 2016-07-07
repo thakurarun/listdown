@@ -6,8 +6,8 @@ var SearchPageComponent = (function () {
         this._router = _router;
     }
     SearchPageComponent.prototype.searchItem = function () {
-        console.log(this.searchText);
-        this._router.navigate(['/List', this.searchText]);
+        if (this.searchText.trim().length)
+            this._router.navigate(['/List', this.searchText.trim()]);
     };
     SearchPageComponent = __decorate([
         core_1.Component({

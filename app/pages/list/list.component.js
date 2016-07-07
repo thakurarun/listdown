@@ -19,7 +19,7 @@ var ListPageComponent = (function () {
     ListPageComponent = __decorate([
         core_1.Component({
             selector: 'list-file',
-            template: "\n    <StackLayout>\n      <Label text=\"List Torrents\">\n      </Label>\n      <Label [(ngModel)]=\"searchText\" textWrap=\"true\"></Label>\n    </StackLayout>\n  "
+            template: "\n    <StackLayout>\n      <Label text=\"List Torrents\">\n      </Label>\n      <Label textWrap=\"true\" [text]=\"searchText\"></Label>\n    </StackLayout>\n  "
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router])
     ], ListPageComponent);

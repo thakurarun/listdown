@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
     <StackLayout>
       <Label text="List Torrents">
       </Label>
-      <Label [(ngModel)]="searchText" textWrap="true"></Label>
+      <Label textWrap="true" [text]="searchText"></Label>
     </StackLayout>
   `
 })
