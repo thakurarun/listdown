@@ -17,3 +17,10 @@ button {
     text-align: center;
     margin: 0 20;
 } 
+.odd {
+    background-color: #284848;
+}
+
+.even {
+    background-color: #f1f1f1;
+}
