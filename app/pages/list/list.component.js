@@ -7,15 +7,18 @@ var ListPageComponent = (function () {
         this.route = route;
         this.router = router;
         this.torrentService = torrentService;
+        this.isLoading = false;
     }
     ListPageComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.isLoading = true;
         this.totalCount = 0;
         var self = this;
         self.sub = self.route.params.subscribe(function (params) {
             _this.torrentService.findTorrents(params['text']).then(function (model) {
                 self.torrents = model.torrents;
                 self.totalCount = model.total;
+                self.isLoading = false;
             }, function (err) { return self.router.navigate(['/']); });
         });
     };
@@ -25,8 +28,8 @@ var ListPageComponent = (function () {
     ListPageComponent.prototype.onNavBtnTap = function () {
         this.router.navigate(['/']);
     };
-    ListPageComponent.prototype.onItemTap = function () {
-        alert('to do');
+    ListPageComponent.prototype.onItemTap = function (e, torrent) {
+        alert('to do' + torrent.torrent_hash);
     };
     ListPageComponent = __decorate([
         core_1.Component({

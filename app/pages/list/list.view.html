@@ -1,17 +1,26 @@
 <StackLayout>
     <Label text="{{totalCount}} Results Found"></Label>
-    <ListView [items]="torrents" (itemTap)="onItemTap($event)">
+    <ListView [items]="torrents">
         <template let-item="item" let-i="index" let-odd="odd" let-even="even">
-            <StackLayout>
-                <CardView margin="10" padding="5" elevation="40" radius="5">
-                    <StackLayout>
-                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.title"></Label>
-                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.category"></Label>
-                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.seeds"></Label>
-                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.leechs"></Label>
+            <CardView class="cardStyle" margin="10" padding="5" elevation="40" radius="5">
+                <GridLayout rows="*, 2*,*" columns="*, *, *">
+                    <Label row="0" colSpan="3" class="title" [text]="item.title" horizontalAlignment="left"></Label>
+                    <StackLayout row="1" col="0">
+                        <Label class="subtitle" textWrap="true" horizontalAlignment="center" text="Category"></Label>
+                        <Label class="content" textWrap="true" horizontalAlignment="center" [text]="item.category"></Label>
                     </StackLayout>
-                </CardView>
-            </StackLayout>
+                    <StackLayout row="1" col="1">
+                        <Label class="subtitle" textWrap="true" horizontalAlignment="center" text="Seeders"></Label>
+                        <Label class="content" textWrap="true" horizontalAlignment="center" [text]="item.seeds"></Label>
+                    </StackLayout>
+                    <StackLayout row="1" col="2">
+                        <Label class="subtitle" textWrap="true" horizontalAlignment="center" text="Leechers"></Label>
+                        <Label class="content" textWrap="true" horizontalAlignment="center" [text]="item.leechs"></Label>
+                    </StackLayout>
+                    <Button class="btn" text="Download" (tap)="onItemTap($event,item)" row="2" colSpan="3" stretch="fill"></Button>
+                </GridLayout>
+            </CardView>
         </template>
     </ListView>
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
 </StackLayout>
