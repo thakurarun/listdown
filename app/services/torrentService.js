@@ -4,6 +4,7 @@ var http_1 = require("@angular/http");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/map");
 var Utility_1 = require("./../util/Utility");
+var torrent_1 = require("./../shared/torrent");
 var TorrentService = (function () {
     function TorrentService(_http) {
         this._http = _http;
@@ -14,15 +15,16 @@ var TorrentService = (function () {
         return this._http.get(url)
             .toPromise()
             .then(function (response) {
-            var torrents = [];
+            var model = new torrent_1.TorrentModel();
+            model.torrents = [];
             var data = response.json();
-            alert('total ' + data.total_found);
             var objectKeys = Object.keys(data).filter(function (c) { if (c * 1)
                 return c; });
             objectKeys.forEach(function (x) {
-                torrents.push(data[x]);
+                model.torrents.push(data[x]);
             });
-            return torrents;
+            model.total = data.total_found;
+            return model;
         })
             .catch(this.handleError);
     };

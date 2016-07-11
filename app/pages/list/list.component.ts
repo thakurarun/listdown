@@ -1,36 +1,28 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {Torrent} from "./../../shared/torrent";
+import {Torrent, TorrentModel} from "./../../shared/torrent";
 import {TorrentService} from './../../services/torrentService';
 @Component({
     selector: 'list-file',
     providers: [TorrentService],
-    template: `
-    <StackLayout>
-      <Label text="List Torrents"></Label>
-      <ListView [items]="torrents" (itemTap)="onItemTap($event)">
-    <template let-item="item" let-i="index" let-odd="odd" let-even="even">
-        <StackLayout [class.odd]="odd" [class.even]="even">
-            <Label [text]='item.title'></Label>
-        </StackLayout>
-    </template>
-</ListView>
-    </StackLayout>
-  `
+    templateUrl:'pages/list/list.view.html'
 })
 export class ListPageComponent implements OnInit, OnDestroy {
     private sub: any;
     private torrent: Torrent;
     private torrents: Torrent[];
+    private totalCount :number;
     constructor(private route: ActivatedRoute, private router: Router, private torrentService: TorrentService) {
 
     }
     ngOnInit() {
+        this.totalCount = 0;
         let self = this;
         self.sub = self.route.params.subscribe(params => {
-            this.torrentService.findTorrents(params['text']).then((data: Torrent[]) => {
-                this.torrents = data;
-            }, (err) => this.router.navigate(['/']));
+            this.torrentService.findTorrents(params['text']).then((model: TorrentModel) => {
+                self.torrents = model.torrents;
+                self.totalCount = model.total;
+            }, (err) => self.router.navigate(['/']));
         });
     }
     ngOnDestroy() {
@@ -39,7 +31,7 @@ export class ListPageComponent implements OnInit, OnDestroy {
     onNavBtnTap() {
         this.router.navigate(['/']);
     }
-    onItemTap(){
+    onItemTap() {
         alert('to do');
     }
 }

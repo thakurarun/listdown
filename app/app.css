@@ -18,9 +18,13 @@ button {
     margin: 0 20;
 } 
 .odd {
-    background-color: #284848;
+    background-color: #ffffff;
 }
 
 .even {
     background-color: #f1f1f1;
+}
+.cardStyle {
+    background-color: #3489db;
+    color: #fff;
 }

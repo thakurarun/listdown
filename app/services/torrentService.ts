@@ -4,13 +4,13 @@ import {Observable} from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 import {Utility} from "./../util/Utility";
-import {Torrent} from "./../shared/torrent";
+import {Torrent, TorrentModel} from "./../shared/torrent";
 @Injectable()
 export class TorrentService {
 
     constructor(private _http: Http) { }
 
-    findTorrents(searchText: string): Promise<Torrent[]> {
+    findTorrents(searchText: string): Promise<TorrentModel> {
         let query = searchText.split(" ").map(m => m.trim()).join("+")
             , outputType = "json"
             , rowcount = "50";
@@ -18,14 +18,15 @@ export class TorrentService {
         return this._http.get(url)
             .toPromise()
             .then(response => {
-                let torrents: Torrent[] = [];
+                let model: TorrentModel = new TorrentModel();
+                model.torrents = [];
                 let data = response.json();
-                alert('total ' + data.total_found);
                 let objectKeys = Object.keys(data).filter((c: any) => { if (c * 1) return c; })
                 objectKeys.forEach(x => {
-                    torrents.push(data[x]);
+                    model.torrents.push(data[x]);
                 });
-                return torrents;
+                model.total = data.total_found;
+                return model;
             })
             .catch(this.handleError);
     }

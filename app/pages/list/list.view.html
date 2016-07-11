@@ -1,0 +1,17 @@
+<StackLayout>
+    <Label text="{{totalCount}} Results Found"></Label>
+    <ListView [items]="torrents" (itemTap)="onItemTap($event)">
+        <template let-item="item" let-i="index" let-odd="odd" let-even="even">
+            <StackLayout>
+                <CardView margin="10" padding="5" elevation="40" radius="5">
+                    <StackLayout>
+                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.title"></Label>
+                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.category"></Label>
+                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.seeds"></Label>
+                        <Label class="title" textWrap="true" horizontalAlignment="center" [text]="item.leechs"></Label>
+                    </StackLayout>
+                </CardView>
+            </StackLayout>
+        </template>
+    </ListView>
+</StackLayout>

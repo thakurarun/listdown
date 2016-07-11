@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
     template: `
     <StackLayout>
     <ActionBar title="List Down"></ActionBar>
-      <Label text="Search Item"></Label>
+      <Label text="Search Any Torrent"></Label>
       <TextField hint="any torrent" [(ngModel)]="searchText"></TextField>
       <Button text="Search" (tap)="searchItem()"></Button>
     </StackLayout>

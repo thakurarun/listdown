@@ -9,7 +9,7 @@
     "tns-android": {
       "version": "2.1.1"
     }
-  },
+  },    
   "dependencies": {
     "@angular/common": "2.0.0-rc.3",
     "@angular/compiler": "2.0.0-rc.3",
@@ -21,6 +21,7 @@
     "@angular/router": "3.0.0-alpha.7",
     "@angular/router-deprecated": "2.0.0-rc.2",
     "nativescript-angular": "0.2.0",
+    "nativescript-cardview": "^1.1.7",
     "tns-core-modules": "^2.1.0"
   },
   "devDependencies": {

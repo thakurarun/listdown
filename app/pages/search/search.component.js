@@ -12,7 +12,7 @@ var SearchPageComponent = (function () {
     SearchPageComponent = __decorate([
         core_1.Component({
             selector: 'search-item',
-            template: "\n    <StackLayout>\n    <ActionBar title=\"List Down\"></ActionBar>\n      <Label text=\"Search Item\"></Label>\n      <TextField hint=\"any torrent\" [(ngModel)]=\"searchText\"></TextField>\n      <Button text=\"Search\" (tap)=\"searchItem()\"></Button>\n    </StackLayout>\n  "
+            template: "\n    <StackLayout>\n    <ActionBar title=\"List Down\"></ActionBar>\n      <Label text=\"Search Any Torrent\"></Label>\n      <TextField hint=\"any torrent\" [(ngModel)]=\"searchText\"></TextField>\n      <Button text=\"Search\" (tap)=\"searchItem()\"></Button>\n    </StackLayout>\n  "
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], SearchPageComponent);

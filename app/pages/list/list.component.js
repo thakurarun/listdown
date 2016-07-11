@@ -10,11 +10,13 @@ var ListPageComponent = (function () {
     }
     ListPageComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.totalCount = 0;
         var self = this;
         self.sub = self.route.params.subscribe(function (params) {
-            _this.torrentService.findTorrents(params['text']).then(function (data) {
-                _this.torrents = data;
-            }, function (err) { return _this.router.navigate(['/']); });
+            _this.torrentService.findTorrents(params['text']).then(function (model) {
+                self.torrents = model.torrents;
+                self.totalCount = model.total;
+            }, function (err) { return self.router.navigate(['/']); });
         });
     };
     ListPageComponent.prototype.ngOnDestroy = function () {
@@ -30,7 +32,7 @@ var ListPageComponent = (function () {
         core_1.Component({
             selector: 'list-file',
             providers: [torrentService_1.TorrentService],
-            template: "\n    <StackLayout>\n      <Label text=\"List Torrents\"></Label>\n      <ListView [items]=\"torrents\" (itemTap)=\"onItemTap($event)\">\n    <template let-item=\"item\" let-i=\"index\" let-odd=\"odd\" let-even=\"even\">\n        <StackLayout [class.odd]=\"odd\" [class.even]=\"even\">\n            <Label [text]='item.title'></Label>\n        </StackLayout>\n    </template>\n</ListView>\n    </StackLayout>\n  "
+            templateUrl: 'pages/list/list.view.html'
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, torrentService_1.TorrentService])
     ], ListPageComponent);

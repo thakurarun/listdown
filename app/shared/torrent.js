@@ -8,4 +8,10 @@ var Torrent = (function () {
     return Torrent;
 }());
 exports.Torrent = Torrent;
+var TorrentModel = (function () {
+    function TorrentModel() {
+    }
+    return TorrentModel;
+}());
+exports.TorrentModel = TorrentModel;
 //# sourceMappingURL=torrent.js.map

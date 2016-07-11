@@ -10,3 +10,9 @@ export class Torrent {
     public torrent_size: number;
     public torrent_hash: string;
 }
+
+export class TorrentModel {
+    public torrent: Torrent;
+    public torrents: Array<Torrent>;
+    public total: number;
+}
