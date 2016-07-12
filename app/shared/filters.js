@@ -1,130 +1,31 @@
 "use strict";
-var Filter = (function () {
-    function Filter() {
-    }
-    Object.defineProperty(Filter.prototype, "all", {
-        get: function () { return 9000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "audio", {
-        get: function () { return 1000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "lossless", {
-        get: function () { return 1101; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "mp3", {
-        get: function () { return 1102; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "video", {
-        get: function () { return 2000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "tv", {
-        get: function () { return 2101; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "dvdrip", {
-        get: function () { return 2102; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "hdrip", {
-        get: function () { return 2103; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "dvd", {
-        get: function () { return 2104; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "lq", {
-        get: function () { return 2105; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "ebooks", {
-        get: function () { return 3000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "comics", {
-        get: function () { return 3101; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "magazines", {
-        get: function () { return 3102; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "tutorials", {
-        get: function () { return 3103; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "audiobook", {
-        get: function () { return 3104; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "images", {
-        get: function () { return 4000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "mobile", {
-        get: function () { return 5000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "games", {
-        get: function () { return 6000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "pc", {
-        get: function () { return 6101; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "nintendo", {
-        get: function () { return 6102; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "playstation", {
-        get: function () { return 6103; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "xbox", {
-        get: function () { return 6104; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "applications", {
-        get: function () { return 7000; },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Filter.prototype, "adult", {
-        get: function () { return 8000; },
-        enumerable: true,
-        configurable: true
-    });
-    return Filter;
-}());
-exports.Filter = Filter;
+(function (Filter) {
+    Filter[Filter["all"] = 9000] = "all";
+    Filter[Filter["audio"] = 1000] = "audio";
+    Filter[Filter["lossless"] = 1101] = "lossless";
+    Filter[Filter["mp3"] = 1102] = "mp3";
+    Filter[Filter["video"] = 2000] = "video";
+    Filter[Filter["tv"] = 2101] = "tv";
+    Filter[Filter["dvdrip"] = 2102] = "dvdrip";
+    Filter[Filter["hdrip"] = 2103] = "hdrip";
+    Filter[Filter["dvd"] = 2104] = "dvd";
+    Filter[Filter["lq"] = 2105] = "lq";
+    Filter[Filter["ebooks"] = 3000] = "ebooks";
+    Filter[Filter["comics"] = 3101] = "comics";
+    Filter[Filter["magazines"] = 3102] = "magazines";
+    Filter[Filter["tutorials"] = 3103] = "tutorials";
+    Filter[Filter["audiobook"] = 3104] = "audiobook";
+    Filter[Filter["images"] = 4000] = "images";
+    Filter[Filter["mobile"] = 5000] = "mobile";
+    Filter[Filter["games"] = 6000] = "games";
+    Filter[Filter["pc"] = 6101] = "pc";
+    Filter[Filter["nintendo"] = 6102] = "nintendo";
+    Filter[Filter["playstation"] = 6103] = "playstation";
+    Filter[Filter["xbox"] = 6104] = "xbox";
+    Filter[Filter["applications"] = 7000] = "applications";
+    Filter[Filter["adult"] = 8000] = "adult";
+})(exports.Filter || (exports.Filter = {}));
+var Filter = exports.Filter;
 var FilterCategory = (function () {
     function FilterCategory(filter, checked) {
         this.filter = filter;

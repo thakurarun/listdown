@@ -1,0 +1,16 @@
+<GridLayout rows="8*, *" columns="*, *" margin="5" padding="10" horizontalAlignment="left" verticalAlignment="center">
+    <ListView [items]="filters" row="0" colSpan="2">
+        <template let-item="item" let-odd="odd" let-even="even">
+            <StackLayout orientation="horizontal">
+                <GridLayout rows="*" columns="30, *">
+                    <Switch row="0" col="0" [(checked)]="item.checked" ng-change="checkFilters()" ></Switch>
+                    <Label row="0" col="1" [text]="item.filter" horizontalAlignment="left" padding="5"></Label>
+                </GridLayout>
+            </StackLayout>
+        </template>
+    </ListView>
+    <StackLayout orientation="horizontal" marginTop="12" row="1" colSpan="2">
+        <Button text="ok" (tap)="close('OK')"></Button>
+        <Button text="cancel" (tap)="close('Cancel')"></Button>
+    </StackLayout>
+</GridLayout>

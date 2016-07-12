@@ -20,8 +20,8 @@ export class ListPageComponent implements OnInit, OnDestroy {
         this.isLoading = true;
         this.totalCount = 0;
         let self = this;
-        self.sub = self.route.params.subscribe(params => {
-            this.torrentService.findTorrents(params['text']).then((model: TorrentModel) => {
+        self.sub = self.router.routerState.queryParams.subscribe(params => {
+            this.torrentService.findTorrents(params['text'],params['filter']).then((model: TorrentModel) => {
                 self.torrents = model.torrents;
                 self.totalCount = model.total;
                 self.isLoading = false;

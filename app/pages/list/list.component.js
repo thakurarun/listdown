@@ -14,8 +14,8 @@ var ListPageComponent = (function () {
         this.isLoading = true;
         this.totalCount = 0;
         var self = this;
-        self.sub = self.route.params.subscribe(function (params) {
-            _this.torrentService.findTorrents(params['text']).then(function (model) {
+        self.sub = self.router.routerState.queryParams.subscribe(function (params) {
+            _this.torrentService.findTorrents(params['text'], params['filter']).then(function (model) {
                 self.torrents = model.torrents;
                 self.totalCount = model.total;
                 self.isLoading = false;

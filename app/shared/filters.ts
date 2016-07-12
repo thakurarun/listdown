@@ -1,33 +1,33 @@
-export class Filter {
-    public get all(): number { return 9000; }
-    public get audio(): number { return 1000; }
-    public get lossless(): number { return 1101; }
-    public get mp3(): number { return 1102; }
-    public get video(): number { return 2000; }
-    public get tv(): number { return 2101; }
-    public get dvdrip(): number { return 2102; }
-    public get hdrip(): number { return 2103; }
-    public get dvd(): number { return 2104; }
-    public get lq(): number { return 2105; }
-    public get ebooks(): number { return 3000; }
-    public get comics(): number { return 3101; }
-    public get magazines(): number { return 3102; }
-    public get tutorials(): number { return 3103; }
-    public get audiobook(): number { return 3104; }
-    public get images(): number { return 4000; }
-    public get mobile(): number { return 5000; }
-    public get games(): number { return 6000; }
-    public get pc(): number { return 6101; }
-    public get nintendo(): number { return 6102; }
-    public get playstation(): number { return 6103; }
-    public get xbox(): number { return 6104; }
-    public get applications(): number { return 7000; }
-    public get adult(): number { return 8000; }
+export enum Filter {
+    all = 9000,
+    audio = 1000,
+    lossless = 1101,
+    mp3 = 1102,
+    video = 2000,
+    tv = 2101,
+    dvdrip = 2102,
+    hdrip = 2103,
+    dvd = 2104,
+    lq = 2105,
+    ebooks = 3000,
+    comics = 3101,
+    magazines = 3102,
+    tutorials = 3103,
+    audiobook = 3104,
+    images = 4000,
+    mobile = 5000,
+    games = 6000,
+    pc = 6101,
+    nintendo = 6102,
+    playstation = 6103,
+    xbox = 6104,
+    applications = 7000,
+    adult = 8000
 }
 
 export class FilterCategory {
-    private filter: String;
-    private checked: Boolean;
+    filter: string;
+    checked: Boolean;
     constructor(filter: string, checked: boolean) {
         this.filter = filter; this.checked = checked;
     }

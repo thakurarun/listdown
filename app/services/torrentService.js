@@ -9,9 +9,10 @@ var TorrentService = (function () {
     function TorrentService(_http) {
         this._http = _http;
     }
-    TorrentService.prototype.findTorrents = function (searchText) {
+    TorrentService.prototype.findTorrents = function (searchText, filter) {
+        if (filter === void 0) { filter = 9000; }
         var query = searchText.split(" ").map(function (m) { return m.trim(); }).join("+"), outputType = "json", rowcount = "50";
-        var url = Utility_1.Utility.StringFormat("https://torrentproject.se/?s={0}&out={1}&orderby=latest&filter=9000&num={2}", query, outputType, rowcount);
+        var url = Utility_1.Utility.StringFormat("https://torrentproject.se/?s={0}&out={1}&orderby=seeders&filter={2}&num={3}", query, outputType, filter, rowcount);
         return this._http.get(url)
             .toPromise()
             .then(function (response) {

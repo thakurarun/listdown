@@ -10,11 +10,11 @@ export class TorrentService {
 
     constructor(private _http: Http) { }
 
-    findTorrents(searchText: string): Promise<TorrentModel> {
+    findTorrents(searchText: string, filter: number = 9000): Promise<TorrentModel> {
         let query = searchText.split(" ").map(m => m.trim()).join("+")
             , outputType = "json"
             , rowcount = "50";
-        let url = Utility.StringFormat("https://torrentproject.se/?s={0}&out={1}&orderby=latest&filter=9000&num={2}", query, outputType, rowcount);
+        let url = Utility.StringFormat("https://torrentproject.se/?s={0}&out={1}&orderby=seeders&filter={2}&num={3}", query, outputType, filter, rowcount);
         return this._http.get(url)
             .toPromise()
             .then(response => {
