@@ -8,7 +8,7 @@ var SearchPageComponent = (function () {
     function SearchPageComponent(_router, modalService) {
         this._router = _router;
         this.modalService = modalService;
-        this.searchText = "";
+        this.searchText = "robot";
     }
     SearchPageComponent.prototype.show = function (fullscreen) {
         var _this = this;

@@ -9,5 +9,6 @@ registerElement("CardView", () => require("nativescript-cardview").CardView);
 registerElement("RadListView", () => RadListView.RadListView);
 nativeScriptBootstrap(AppComponent, [
   APP_ROUTER_PROVIDERS,
-    HTTP_PROVIDERS
+    HTTP_PROVIDERS,
+    //to do https://github.com/NathanWalker/nativescript-ng2-fonticon
 ]);

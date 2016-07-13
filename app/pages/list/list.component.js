@@ -8,6 +8,7 @@ var ListPageComponent = (function () {
         this.router = router;
         this.torrentService = torrentService;
         this.isLoading = false;
+        this.colors = ["#f16364", "#663cb5", "#e61564", "#e4c62e", "#67bf74", "#59a2be", "#2093cd", "#ad62a7"];
     }
     ListPageComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -16,7 +17,7 @@ var ListPageComponent = (function () {
         var self = this;
         self.sub = self.router.routerState.queryParams.subscribe(function (params) {
             _this.torrentService.findTorrents(params['text'], params['filter']).then(function (model) {
-                self.torrents = model.torrents;
+                self.torrents = _this.colorTheCards(model.torrents);
                 self.totalCount = model.total;
                 self.isLoading = false;
             }, function (err) { return self.router.navigate(['/']); });
@@ -30,6 +31,14 @@ var ListPageComponent = (function () {
     };
     ListPageComponent.prototype.onItemTap = function (e, torrent) {
         alert('to do' + torrent.torrent_hash);
+    };
+    ListPageComponent.prototype.colorTheCards = function (torrents) {
+        var _this = this;
+        var length = this.colors.length - 1;
+        return torrents.filter(function (x) {
+            x.color = _this.colors[Math.floor(Math.random() * length)];
+            return true;
+        });
     };
     ListPageComponent = __decorate([
         core_1.Component({

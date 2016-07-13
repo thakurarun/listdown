@@ -21,14 +21,24 @@ export class TorrentService {
                 let model: TorrentModel = new TorrentModel();
                 model.torrents = [];
                 let data = response.json();
-                let objectKeys = Object.keys(data).filter((c: any) => { if (c * 1) return c; })
-                objectKeys.forEach(x => {
-                    model.torrents.push(data[x]);
+                Object.keys(data).filter((c: string) => !!+c).forEach(x => {
+                    let _torrent: Torrent = new Torrent(data[x].category,
+                        data[x].title, data[x].seeds, data[x].leechs, data[x].torrent_size,
+                        data[x].torrent_hash, this.formatBytes(data[x].torrent_size));
+                    model.torrents.push(_torrent);
                 });
                 model.total = data.total_found;
                 return model;
             })
             .catch(this.handleError);
+    }
+    private formatBytes(bytes, decimals = 2) {
+        if (bytes == 0) return '0 Byte';
+        var k = 1000;
+        var dm = decimals + 1 || 3;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
     private handleError(error: any) {
         alert('check your internet');

@@ -2,7 +2,7 @@
     <Label text="{{totalCount}} Results Found"></Label>
     <ListView [items]="torrents">
         <template let-item="item" let-i="index" let-odd="odd" let-even="even">
-            <CardView class="cardStyle" margin="10" padding="5" elevation="40" radius="5">
+            <CardView class="cardStyle" margin="10" padding="5" elevation="40" radius="5" style="background-color:{{item.color}};" >
                 <GridLayout rows="*, 2*,*" columns="*, *, *">
                     <Label row="0" colSpan="3" class="title" [text]="item.title" horizontalAlignment="left"></Label>
                     <StackLayout row="1" col="0">
@@ -17,7 +17,12 @@
                         <Label class="subtitle" textWrap="true" horizontalAlignment="center" text="Leechers"></Label>
                         <Label class="content" textWrap="true" horizontalAlignment="center" [text]="item.leechs"></Label>
                     </StackLayout>
-                    <Button class="btn" text="Download" (tap)="onItemTap($event,item)" row="2" colSpan="3" stretch="fill"></Button>
+                    <StackLayout row="2" col="0">
+                        <Label class="subtitle" textWrap="true" horizontalAlignment="center" text="Size"></Label>
+                        <Label class="content" textWrap="true" horizontalAlignment="center" [text]="item.sizeString"></Label>
+                    </StackLayout>
+                    <Label class="fa" text="{{'fa-bluetooth' | fonticon}}" row="2" col="1" colSpan="2" stretch="fill"></Label> 
+                    <!--<Button class="btn" text="Download" (tap)="onItemTap($event,item)" row="2" col="1" colSpan="2" stretch="fill"></Button>-->
                 </GridLayout>
             </CardView>
         </template>

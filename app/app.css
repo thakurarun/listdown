@@ -1,4 +1,7 @@
-﻿button, label, stack-layout {
+﻿.fa {
+  font-family: FontAwesome, fontawesome-webfont;
+}
+button, label, stack-layout {
     horizontal-align: center;    
 }
 
@@ -20,7 +23,6 @@ button {
     background-color: #f1f1f1;
 }
 .cardStyle {
-    background-color: #3489db;
     color: #fff;
 }
 .cardStyle .title {

@@ -5,7 +5,7 @@ import {ListPageComponent} from "./pages/list/list.component";
 
 export const routes: RouterConfig = [
   { path: "", component: SearchPageComponent },
-  { path: "List", component: ListPageComponent }
+  { path: "List", component: ListPageComponent  }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
