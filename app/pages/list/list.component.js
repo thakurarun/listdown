@@ -1,12 +1,14 @@
 "use strict";
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var nativescript_ng2_fonticon_1 = require('nativescript-ng2-fonticon');
 var torrentService_1 = require('./../../services/torrentService');
 var ListPageComponent = (function () {
-    function ListPageComponent(route, router, torrentService) {
+    function ListPageComponent(route, router, torrentService, fonticon) {
         this.route = route;
         this.router = router;
         this.torrentService = torrentService;
+        this.fonticon = fonticon;
         this.isLoading = false;
         this.colors = ["#f16364", "#663cb5", "#e61564", "#e4c62e", "#67bf74", "#59a2be", "#2093cd", "#ad62a7"];
     }
@@ -44,9 +46,10 @@ var ListPageComponent = (function () {
         core_1.Component({
             selector: 'list-file',
             providers: [torrentService_1.TorrentService],
+            pipes: [nativescript_ng2_fonticon_1.TNSFontIconPipe, nativescript_ng2_fonticon_1.TNSFontIconPurePipe],
             templateUrl: 'pages/list/list.view.html'
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, torrentService_1.TorrentService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, torrentService_1.TorrentService, nativescript_ng2_fonticon_1.TNSFontIconService])
     ], ListPageComponent);
     return ListPageComponent;
 }());

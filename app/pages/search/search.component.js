@@ -1,13 +1,15 @@
 "use strict";
 var core_1 = require('@angular/core');
 var modal_dialog_1 = require("nativescript-angular/modal-dialog");
+var nativescript_ng2_fonticon_1 = require('nativescript-ng2-fonticon');
 var filters_1 = require("./../../shared/filters");
 var filterDialog_1 = require('./filterDialog');
 var router_1 = require("@angular/router");
 var SearchPageComponent = (function () {
-    function SearchPageComponent(_router, modalService) {
+    function SearchPageComponent(_router, modalService, fonticon) {
         this._router = _router;
         this.modalService = modalService;
+        this.fonticon = fonticon;
         this.searchText = "robot";
     }
     SearchPageComponent.prototype.show = function (fullscreen) {
@@ -36,9 +38,10 @@ var SearchPageComponent = (function () {
             selector: 'search-item',
             directives: [modal_dialog_1.ModalDialogHost],
             providers: [modal_dialog_1.ModalDialogService],
+            pipes: [nativescript_ng2_fonticon_1.TNSFontIconPipe, nativescript_ng2_fonticon_1.TNSFontIconPurePipe],
             template: "\n    <StackLayout>\n    <ActionBar title=\"List Down\"></ActionBar>\n      <Label text=\"Search Any Torrent\"></Label>\n      <TextField hint=\"any torrent\" [(ngModel)]=\"searchText\"></TextField>\n     <StackLayout modal-dialog-host>\n        <Button text=\"Filter & Search\" (tap)=\"show()\"></Button>\n    </StackLayout>\n    </StackLayout>\n  "
         }), 
-        __metadata('design:paramtypes', [router_1.Router, modal_dialog_1.ModalDialogService])
+        __metadata('design:paramtypes', [router_1.Router, modal_dialog_1.ModalDialogService, nativescript_ng2_fonticon_1.TNSFontIconService])
     ], SearchPageComponent);
     return SearchPageComponent;
 }());

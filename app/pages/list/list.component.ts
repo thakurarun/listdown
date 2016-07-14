@@ -1,10 +1,12 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import {TNSFontIconService, TNSFontIconPipe, TNSFontIconPurePipe} from 'nativescript-ng2-fonticon';
 import {Torrent, TorrentModel} from "./../../shared/torrent";
 import {TorrentService} from './../../services/torrentService';
 @Component({
     selector: 'list-file',
     providers: [TorrentService],
+    pipes: [TNSFontIconPipe, TNSFontIconPurePipe],
     templateUrl: 'pages/list/list.view.html'
 })
 export class ListPageComponent implements OnInit, OnDestroy {
@@ -14,7 +16,7 @@ export class ListPageComponent implements OnInit, OnDestroy {
     private totalCount: number;
     private isLoading = false;
     private colors: string[] = ["#f16364", "#663cb5", "#e61564", "#e4c62e", "#67bf74", "#59a2be", "#2093cd", "#ad62a7"];
-    constructor(private route: ActivatedRoute, private router: Router, private torrentService: TorrentService) {
+    constructor(private route: ActivatedRoute, private router: Router, private torrentService: TorrentService, private fonticon: TNSFontIconService) {
 
     }
     ngOnInit() {
